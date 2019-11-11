@@ -1,0 +1,11 @@
+{% extends 'base/index_admin.html' %}
+
+
+<!-- si sacas el contenido se mostrara la pagina por defecto del demo -->
+{% block contenido %}
+
+{% for row in detalle_empresa %}
+{{row}}
+{% endfor %}
+
+{% endblock contenido %}

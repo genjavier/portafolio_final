@@ -1,0 +1,14 @@
+{% extends 'base/index_empresa.html' %}
+
+
+<!-- si sacas el contenido se mostrara la pagina por defecto del demo -->
+{% block contenido %}
+
+<h2>{{notificaciones.titulo}}</h2>
+<h2>{{notificaciones.comentario}}</h2>
+<h2><a href="{% url "faskApp:delete_notif" notificaciones.id %}">Marcar como leido</h2>
+
+
+
+
+{% endblock contenido %}

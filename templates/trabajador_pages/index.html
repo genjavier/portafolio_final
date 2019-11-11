@@ -1,0 +1,124 @@
+{% extends 'base/index_trabajador.html' %}
+
+
+<!-- si sacas el contenido se mostrara la pagina por defecto del demo -->
+{% block contenido %}
+
+{% if tarea %}
+
+{% for tarea in tarea %}
+{% if tarea.trabajador.user_id == request.user.id %}
+
+<div class="m-portlet">
+	<div class="m-portlet__body  m-portlet__body--no-padding">
+		<div class="row m-row--no-padding m-row--col-separator-xl">
+			<div class="col-xl-4">
+				<!--begin:: Widgets/Profit Share-->
+				<div class="m-widget14">
+					<div class="m-widget14__header">
+						<h3 class="m-widget14__title">
+							Información
+						</h3>
+					</div>
+					<div class="row  align-items-center">
+						<div class="col">
+							<div class="form-group">
+								<label for="recipient-name" class="form-control-label">
+									Asignada por:
+								</label>
+								<input type="text" class="form-control" id="recipient-name" value="Sebastian Ravelo"
+									disabled>
+							</div>
+							<div class="form-group">
+								<label for="message-text" class="form-control-label">
+									Descripción:
+								</label>
+								<textarea class="form-control" id="message-text"
+									disabled>Comentario de ejemplo para la realización de una Sub Tarea</textarea>
+							</div>
+							<div class="form-group">
+								<label for="recipient-name" class="form-control-label">
+									Fecha Vencimiento:
+								</label>
+								<input type='text' class="form-control" id="m_datepicker_1" readonly
+									placeholder="Select date" value="27/07/2019" disabled>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end:: Widgets/Profit Share-->
+			</div>
+			<div class="col-xl-4">
+				<!--begin:: Widgets/Daily Sales-->
+				<div class="m-widget14">
+					<div class="m-widget14__header m--margin-bottom-30">
+						<h3 class="m-widget14__title">
+							Sub Tareas (En proceso)
+						</h3>
+						<!--<span class="m-widget14__desc">
+															Check out each collumn for more details
+														</span>-->
+					</div>
+					<div class="col">
+						<div class="m-widget14__legends">
+							<div class="m-widget14__legend">
+								<button type="button" class="btn btn-success btn-block" data-toggle="modal"
+									data-target="#m_modal_4">
+									Sub Tarea 1
+								</button>
+							</div>
+							<div class="m-widget14__legend">
+								<button type="button" class="btn btn-warning btn-block" data-toggle="modal"
+									data-target="#m_modal_4">
+									Sub Tarea 2
+								</button>
+							</div>
+							<div class="m-widget14__legend">
+								<button type="button" class="btn btn-danger btn-block" data-toggle="modal"
+									data-target="#m_modal_4">
+									Sub Tarea 3
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end:: Widgets/Daily Sales-->
+			</div>
+			<div class="col-xl-4">
+				<!--begin:: Widgets/Revenue Change-->
+				<div class="m-widget14">
+					<div class="m-widget14__header m--margin-bottom-30">
+						<h3 class="m-widget14__title">
+							Acciones
+						</h3>
+						<!--<span class="m-widget14__desc">
+															Check out each collumn for more details
+														</span>-->
+					</div>
+					<div class="col">
+						<div class="m-widget14__legends">
+							<div class="m-widget14__legend">
+								<button type="button" class="btn btn-primary btn-block" data-toggle="modal"
+									data-target="#m_modal_4">
+									Reportar Tarea
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--end:: Widgets/Revenue Change-->
+			</div>
+		</div>
+	</div>
+</div>
+{% endif %}
+{% endfor %}
+
+{% else %}
+
+{% comment %}
+{{ tarea.trabajador.user_id }} == {{request.user.id}} {% endcomment %}
+<h1>No tienes tareas pendientes</h1>
+{% endif %}
+
+{% endblock contenido %}

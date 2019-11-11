@@ -1,0 +1,21 @@
+{% extends 'Base/index_empresa.html' %}
+
+{% load crispy_forms_tags %}
+
+
+
+{% block contenido %}
+<div class="container">
+
+    <h1>Perfil</h1>
+    <p>Usuario: {{ user }}</p>
+    <p>Nombre: {{ user.first_name }}</p>
+    {% if object_list %}
+    <p>Apellidos: {{ object_list.nombre }}</p>
+    {% endif%}
+    <p>Email: {{ user.email }}</p>
+
+    <a class="btn btn-primary" href="{% url "faskApp:editar_empresa"  user.id %}">Editar</a>
+</div>
+
+{% endblock %}

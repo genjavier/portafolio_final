@@ -1,0 +1,11 @@
+{% extends 'Base/index_admin.html' %}
+{% load static crispy_forms_tags %}
+{% block contenido %}
+<form method="post">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {{ form2|crispy }}
+
+  <button type="submit" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">Guardar</button>
+</form>
+{% endblock%}

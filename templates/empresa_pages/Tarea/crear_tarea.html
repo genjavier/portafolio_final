@@ -1,0 +1,39 @@
+
+
+
+{% extends 'base/index_empresa.html' %}
+
+
+<!-- si sacas el contenido se mostrara la pagina por defecto del demo -->
+{% load crispy_forms_tags %}
+
+
+{% block contenido %}
+<div class="container">
+    <h1>Tarea</h1>
+    <form method="post">
+        {% csrf_token %}
+      {{ form|crispy }}
+		
+        <button type="submit" class="btn btn-accent m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">Guardar</button>
+    
+	</form>
+
+      
+</div>
+ <script>
+  $(function() {
+    $( ".datepicker" ).datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: "1960:2050",
+      // You can put more options here.
+
+    });
+  });
+  </script>
+
+<!--begin::Modal-->
+					
+						<!--end::Modal-->
+{% endblock %}

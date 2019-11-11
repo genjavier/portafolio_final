@@ -1,0 +1,49 @@
+{% extends 'Base/index_empresa.html' %}
+{% load static crispy_forms_tags %}
+
+{% block contenido %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>No. Solicitud</td>
+			<td>Username</td>
+			<td>nombre</td>
+			<td>Ap</td>
+			<td>Emprsa id</td>
+			<td>trabajador empresa id</td>
+			<td>Empresa</td>
+			<td>Acciones</td>
+		</tr>
+
+	</thead>
+	<tbody>
+
+		{% if object_list %}
+		{% for trabajador in object_list %}
+		{% if trabajador.empresa.user_id == request.user.id %}
+		<tr>
+			<td>{{trabajador.id }}</td>
+			<td>{{trabajador.user.username }}</td>
+			<td>{{trabajador.apellidoP}} </td>
+			<td>{{trabajador.user.email}} </td>
+			<td>{{trabajador.empresa.user_id}} </td>
+			<td>{{trabajador.empresa_id}} gg </td>
+			<td>{{trabajador.empresa.nombre}} </td>
+
+
+			<td>
+				<a class="btn btn-primary" href="{% url "faskApp:editar_trabajador"  trabajador.id %}">Editar</a>
+				<a class="btn btn-danger" href="{% url "faskApp:eliminar_trabajador"  trabajador.id %}">Eliminar</a>
+			</td>
+		</tr>
+		{% endif %}
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registros de solicitudes</h1>
+		{% endif %}
+	</tbody>
+</table>
+
+{% endblock%}

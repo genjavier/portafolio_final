@@ -1,0 +1,45 @@
+{% extends 'Base/index_admin.html' %}
+{% load static crispy_forms_tags %}
+
+{% block contenido %}
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<td>#</td>
+			<td>Nombre empresa</td>
+			<td>Rut</td>
+			<td>Nombre usuario</td>
+			<td>Email</td>
+			<td>Telefono</td>
+			<td>Acciones</td>
+		</tr>
+
+	</thead>
+	<tbody>
+
+		{% if object_list %}
+		{% for empresa in object_list %}
+		<tr>
+			<td>{{ forloop.counter  }}</td>
+			<td>{{ empresa.nombre }}</td>
+			<td>{{ empresa.rut }}</td>
+			<td>{{empresa.user.username}} </td>
+			<td>{{empresa.user.Email}} </td>
+			<td>{{empresa.telefono}} </td>
+
+
+			<td>
+				<a class="btn btn-primary" href="{% url "faskApp:editar_empresa"  empresa.id %}">Editar</a>
+				<a class="btn btn-danger" href="{% url "faskApp:eliminar_empresa"  empresa.id %}">Eliminar</a>
+			</td>
+		</tr>
+		{% endfor %}
+
+		{% else %}
+		<h1>No hay registros de solicitudes</h1>
+		{% endif %}
+	</tbody>
+</table>
+
+{% endblock%}

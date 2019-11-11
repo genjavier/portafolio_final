@@ -1,0 +1,92 @@
+{% extends 'base/index_admin.html' %}
+
+
+<!-- si sacas el contenido se mostrara la pagina por defecto del demo -->
+{% block contenido %}
+
+
+<div class="m-portlet">
+								<div class="m-portlet__head">
+									<div class="m-portlet__head-caption">
+
+										<div class="m-portlet__head-title">
+											<h3 class="m-portlet__head-text">
+												Lista de Tareas <p>
+    <a href="{% url "inicio:tarea_new" %}">Agregar Tarea</a>
+</p>
+
+											</h3>
+										</div>
+									</div>
+								</div>
+								<div class="m-portlet__body">
+									<!--begin::Section-->
+									<div class="m-section">
+
+									<div class="m-section__content">
+										<table class="table table-sm m-table m-table--head-bg-brand">
+											<thead class="thead-inverse">
+												<tr>
+													<th>
+														#
+													</th>
+													<th>
+														Comentario
+													</th>
+													<th>
+														Fecha de vencimiento
+													</th>
+													<th>
+														Estado
+													</th>
+                                                    	<th>
+														Fecha de creacion
+													</th>
+                                                    	
+                                                      	<th>
+														Editar
+													</th>
+                                                      	<th>
+														Eliminar
+													</th>
+												</tr>
+											</thead>
+
+											<tbody>
+                                            {% for cliente in object_list %}
+												<tr>
+													<th scope="row">
+														#
+													</th>
+													<td>
+														{{ cliente.comentario }}
+													</td>
+													<td>
+														{{ cliente.fecha_vencimiento }}
+													</td>
+													<td>
+														{{ cliente.estado }}
+													</td>
+                                                    <td>
+														{{ cliente.fecha_creacion }}
+													</td>
+                                                   
+                                                    <td>
+														 <a href="{% url "inicio:tarea_edit" cliente.id %}">Editar</a>
+													</td>
+                                                    <td>
+														 <a href="{% url "inicio:tarea_delete" cliente.id %}">Borrar</a>
+													</td>
+												</tr>
+												
+										    {% endfor %}
+											</tbody>
+										</table>
+									</div>
+								</div>
+								<!--end::Section-->
+							</div>
+						</div>
+
+
+{% endblock contenido %}
